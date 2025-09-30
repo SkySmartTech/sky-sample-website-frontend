@@ -4,31 +4,10 @@ import useCurrentUser from "../../hooks/useCurrentUser";
 import { getOrganization } from "../../api/OrganizationSettings/organizationSettingsApi";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
+import insightImage from "../../assets/welcomeInsight.png";
 
 function Insight() {
   const { user } = useCurrentUser();
-
-  const { data: organizationData } = useQuery({
-    queryKey: ["organization"],
-    queryFn: getOrganization,
-  });
-
-  console.log("yoo", organizationData?.insightImage);
-  const insightImage = useMemo(() => {
-    if (organizationData && organizationData?.insightImage) {
-      return Array.isArray(organizationData.insightImage)
-        ? organizationData.insightImage[0]
-        : organizationData.insightImage;
-    }
-  }, [organizationData]);
-
-  const insightDescription = useMemo(() => {
-    if (organizationData && organizationData?.insightDescription) {
-      return Array.isArray(organizationData.insightDescription)
-        ? organizationData.insightDescription[0]
-        : organizationData.insightDescription;
-    }
-  }, [organizationData]);
 
   return (
     <Stack>
@@ -41,7 +20,7 @@ function Insight() {
       </Typography>
       <Box
         component="img"
-        src={insightImage?.signedUrl}
+        src={insightImage}
         alt="Under Development"
         sx={{
           height: "auto",
@@ -57,7 +36,8 @@ function Insight() {
         align="center"
         sx={{ mt: 2, color: "var(--pallet-main-blue)" }}
       >
-        {insightDescription}
+        View real-time insights on Sky Smart Tech Sample Web Site, collection
+        efficiency, and trends.
       </Typography>
     </Stack>
   );

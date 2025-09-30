@@ -41,7 +41,7 @@ export default function AddOrEditHazardRiskDialog({
 }) {
   const breadcrumbItems = [
     { title: "Home", href: "/home" },
-    { title: "Accordian & Dividers" },
+    { title: "Accordion & Dividers" },
   ];
   const { isMobile, isTablet } = useIsMobile();
   const [selectedDemo, setSelectedDemo] = useState([]);
@@ -90,7 +90,7 @@ export default function AddOrEditHazardRiskDialog({
               borderRadius: "0.3rem",
             }}
           >
-            <Typography variant="subtitle2">Accordian</Typography>
+            <Typography variant="subtitle2">Accordion</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Box

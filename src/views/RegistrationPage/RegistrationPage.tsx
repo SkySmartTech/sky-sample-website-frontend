@@ -2,13 +2,13 @@ import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import leftLandingLeave from "../../assets/b_leaf_l.svg";
 import rightLandingLeave from "../../assets/b_leaf_r.svg";
 import ImageCarousel from "../../components/ImageCarousel";
-import sliderImage1 from "../../assets//welcome.png";
-import sliderImage2 from "../../assets/health_safety.png";
-import sliderImage3 from "../../assets/employee_engage.png";
 import RegistrationForm from "./RegistrationForm";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import PageLoader from "../../components/PageLoader";
 import { useNavigate } from "react-router";
+import index1 from "../../assets/new1.png";
+import index2 from "../../assets/new2.png";
+import index3 from "../../assets/new3.png";
 
 function RegistrationPage() {
   const theme = useTheme();
@@ -49,9 +49,9 @@ function RegistrationPage() {
         >
           <ImageCarousel
             images={[
-              { src: sliderImage1, alt: "Welcome" },
-              { src: sliderImage2, alt: "Health & Safety" },
-              { src: sliderImage3, alt: "Employee Engagement" },
+              { src: index1, alt: "Welcome" },
+              { src: index2, alt: "Health & Safety" },
+              { src: index3, alt: "Employee Engagement" },
             ]}
           />
           <Typography
@@ -65,7 +65,7 @@ function RegistrationPage() {
               textAlign: "center",
             }}
           >
-            Be Sustainable with Us
+            Sky Smart Technology
           </Typography>
           <Typography
             variant="subtitle2"
@@ -76,7 +76,7 @@ function RegistrationPage() {
               textAlign: "center",
             }}
           >
-            copyright © 2024 Chasseur-Dynamics, All Rights Reserved
+            copyright © 2025 Sky Smart Technology, All Rights Reserved
           </Typography>
           <Typography
             variant="subtitle2"
@@ -89,15 +89,13 @@ function RegistrationPage() {
               marginBottom: "2rem",
             }}
           >
-            By sign into this application, you acknowledge being Authorized to
-            do so and hence you shall abide by all the Policies & Procedures
-            associated with this Application. Any violation or misuse of this
-            Authorization shall attract strict action, including legal recourse.
+            Our dedicated teams of engineers, architects, and tech consultants
+            are here to support your bold ideas, guide you through our
+            cutting-edge solutions, and provide answers to your technical and
+            business questions. Let's build smarter, together.
           </Typography>
         </Stack>
-        <Stack
-          sx={{ flex: isMdUp ? 2 : 1, height: "100vh", overflowY: "auto" }}
-        >
+        <Stack sx={{ flex: isMdUp ? 2 : 1, justifyContent: "center" }}>
           <RegistrationForm />
         </Stack>
       </Stack>
