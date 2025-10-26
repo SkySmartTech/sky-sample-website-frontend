@@ -17,7 +17,7 @@ import {
 import { DrawerContentItem } from "../../components/ViewDataDrawer";
 import CustomButton from "../../components/CustomButton";
 import { useState } from "react";
-import ApproveConfirmationModal from "../OccupationalHealth/MedicineInventory/MedicineRequest/ApproveConfirmationModal";
+import ApproveConfirmationModal from "../../components/ApproveConfirmationModal";
 import { FileItemsViewer } from "../../components/FileItemsViewer";
 import { StorageFile } from "../../utils/StorageFiles.util";
 import { useMutation } from "@tanstack/react-query";

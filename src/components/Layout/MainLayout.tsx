@@ -41,7 +41,8 @@ import ViewProfileDataDrawer, {
 } from "../ViewProfileDataDrawer";
 import ProfileImage from "../ProfileImageComponent";
 import { useQuery } from "@tanstack/react-query";
-import { getOrganization } from "../../api/OrganizationSettings/organizationSettingsApi";
+// import { getOrganization } from "../../api/OrganizationSettings/organizationSettingsApi";
+import logoUrl from "../../assets/company-logo1.jpg";
 
 const drawerWidth = 265;
 
@@ -153,20 +154,6 @@ export default function MainLayout({ children }: Props) {
     setOpen(false);
   };
 
-  const { data: organizationData } = useQuery({
-    queryKey: ["organization"],
-    queryFn: getOrganization,
-  });
-
-  console.log("yoo", organizationData?.logoUrl);
-  const logoUrl = useMemo(() => {
-    if (organizationData && organizationData?.logoUrl) {
-      return Array.isArray(organizationData.logoUrl)
-        ? organizationData.logoUrl[0]
-        : organizationData.logoUrl;
-    }
-  }, [organizationData]);
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -205,7 +192,7 @@ export default function MainLayout({ children }: Props) {
               {logoUrl && (
                 <Box>
                   <img
-                    src={logoUrl?.signedUrl}
+                    src={logoUrl}
                     alt="logo"
                     height={"45rem"}
                     style={{ marginTop: "10px" }}

@@ -14,7 +14,7 @@ const ImageCarousel = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000); // Change slide every 10 seconds
+    }, 5000); // Change slide every 10 seconds
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);

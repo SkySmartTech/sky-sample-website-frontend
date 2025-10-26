@@ -45,7 +45,7 @@ import DatePickerComponent from "../../components/DatePickerComponent";
 import useIsMobile from "../../customHooks/useIsMobile";
 import queryClient from "../../state/queryClient";
 import theme from "../../theme";
-import ApproveConfirmationModal from "../OccupationalHealth/MedicineInventory/MedicineRequest/ApproveConfirmationModal";
+import ApproveConfirmationModal from "../../components/ApproveConfirmationModal";
 import {
   ChemicalCertificate,
   ChemicalPurchaseRequest,
@@ -826,7 +826,7 @@ export default function AddOrEditChemicalPurchaseAndInventoryDialog({
                           options={
                             supplierTypeData?.length
                               ? supplierTypeData.map(
-                                  (supplier) => supplier.type
+                                  (supplier) => supplier.typeName
                                 )
                               : []
                           }

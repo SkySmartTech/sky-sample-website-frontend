@@ -11,7 +11,6 @@ import {
   Autocomplete,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import companyLogo from "../../assets/company-logo.jpg";
 import groupLogo from "../../assets/group-logo.png";
 import { useForm, Controller } from "react-hook-form";
 import CustomButton from "../../components/CustomButton";
@@ -22,6 +21,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { registerUser } from "../../api/userApi";
 import SwitchButton from "../../components/SwitchButton";
 import AutoCheckBox from "../../components/AutoCheckbox";
+import companyLogo from "../../assets/company-logo1.jpg";
 
 //API Imports
 import { departmentSchema, fetchDepartmentData } from "../../api/departmentApi";
@@ -147,12 +147,7 @@ function RegistrationForm() {
     >
       <Box>
         <img src={companyLogo} alt="logo" height={"65em"} />
-        <img
-          src={groupLogo}
-          alt="logo"
-          style={{ marginLeft: "1rem" }}
-          height={"45em"}
-        />
+        
       </Box>
       <Box>
         <Typography variant={"body2"}>

@@ -37,9 +37,11 @@ import DeleteConfirmationModal from "../../components/DeleteConfirmationModal";
 import ViewChemicalRequestContent from "./ViewChemicalRequestContent";
 import AddOrEditChemicalRequestDialog from "./AddOrEditChemicalRequestDialog";
 import CustomButton from "../../components/CustomButton";
-import ApproveConfirmationModal from "../OccupationalHealth/MedicineInventory/MedicineRequest/ApproveConfirmationModal";
+import ApproveConfirmationModal from "../../components/ApproveConfirmationModal";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import queryClient from "../../state/queryClient";
+import useCurrentUserHaveAccess from "../../hooks/useCurrentUserHaveAccess";
+import { PermissionKeys } from "../Administration/SectionList";
 
 function ChemicalRequestTable({
   isAssignedTasks,
@@ -142,6 +144,27 @@ function ChemicalRequestTable({
     rowsPerPage,
     chemicalRequests,
   ]);
+  const isCreateDisabled = !useCurrentUserHaveAccess(
+    PermissionKeys.CHEMICAL_MNG_REQUEST_REGISTER_CREATE
+  );
+  const isAssignedCreateDisabled = !useCurrentUserHaveAccess(
+    PermissionKeys.CHEMICAL_MNG_ASSIGNED_TASKS_CREATE
+  );
+
+  const isEditDisabled = !useCurrentUserHaveAccess(
+    PermissionKeys.CHEMICAL_MNG_REQUEST_REGISTER_EDIT
+  );
+  const isAssignedEditDisabled = !useCurrentUserHaveAccess(
+    PermissionKeys.CHEMICAL_MNG_ASSIGNED_TASKS_EDIT
+  );
+
+  const isDeleteDisabled = !useCurrentUserHaveAccess(
+    PermissionKeys.CHEMICAL_MNG_REQUEST_REGISTER_DELETE
+  );
+  const isAssignedDeleteDisabled = !useCurrentUserHaveAccess(
+    PermissionKeys.CHEMICAL_MNG_ASSIGNED_TASKS_DELETE
+  );
+
   return (
     <Stack>
       <Box
@@ -180,6 +203,9 @@ function ChemicalRequestTable({
                 setSelectedRow(null);
                 setOpenAddOrEditDialog(true);
               }}
+              disabled={
+                isAssignedTasks ? isAssignedCreateDisabled : isCreateDisabled
+              }
             >
               Add New Chemical Request
             </Button>
@@ -295,8 +321,14 @@ function ChemicalRequestTable({
                 setSelectedRow(selectedRow);
                 setOpenAddOrEditDialog(true);
               }}
-              disableEdit={selectedRow?.status !== ChemicalRequestStatus.DRAFT}
+              disableEdit={
+                selectedRow?.status !== ChemicalRequestStatus.DRAFT ||
+                (isAssignedTasks ? isAssignedEditDisabled : isEditDisabled)
+              }
               onDelete={() => setDeleteDialogOpen(true)}
+              disableDelete={
+                isAssignedTasks ? isAssignedDeleteDisabled : isDeleteDisabled
+              }
             />
 
             {selectedRow && (
