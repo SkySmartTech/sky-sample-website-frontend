@@ -37,7 +37,7 @@ import DeleteConfirmationModal from "../../components/DeleteConfirmationModal";
 import ViewChemicalRequestContent from "./ViewChemicalRequestContent";
 import AddOrEditChemicalRequestDialog from "./AddOrEditChemicalRequestDialog";
 import CustomButton from "../../components/CustomButton";
-import ApproveConfirmationModal from "../OccupationalHealth/MedicineInventory/MedicineRequest/ApproveConfirmationModal";
+import ApproveConfirmationModal from "../../components/ApproveConfirmationModal";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import queryClient from "../../state/queryClient";
 

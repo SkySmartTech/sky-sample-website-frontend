@@ -7,7 +7,6 @@ import { PermissionKeys } from "./views/Administration/SectionList";
 import PermissionDenied from "./components/PermissionDenied";
 import { useQuery } from "@tanstack/react-query";
 import { User, validateUser } from "./api/userApi";
-import { AuditCalendar } from "./views/AuditAndInspection/Calendar/Calendar";
 
 //Login Page
 const LoginPage = React.lazy(() => import("./views/LoginPage/LoginPage"));
@@ -42,9 +41,6 @@ const UnderDevelopment = React.lazy(
 const TextField = React.lazy(() => import("./views/Components/TextField"));
 const DatePickers = React.lazy(() => import("./views/Components/DatePickers"));
 const OtherInputs = React.lazy(() => import("./views/Components/OtherInputs"));
-const EnvironmentDashBoard = React.lazy(
-  () => import("./views/Environment/Dashboard")
-);
 
 //Sample CRUD - Chemical management
 const ChemicalRequestTable = React.lazy(
