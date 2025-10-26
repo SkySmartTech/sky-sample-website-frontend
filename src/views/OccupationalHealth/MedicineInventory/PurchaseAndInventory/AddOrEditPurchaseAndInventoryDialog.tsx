@@ -753,7 +753,7 @@ export default function AddOrEditPurchaseAndInventoryDialog({
                           options={
                             supplierTypeData?.length
                               ? supplierTypeData.map(
-                                  (supplier) => supplier.type
+                                  (supplier) => supplier.typeName
                                 )
                               : []
                           }

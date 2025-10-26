@@ -33,9 +33,7 @@ const AccordionAndDividers = React.lazy(
 const ImageDesigns = React.lazy(
   () => import("./views/Components/ImageDesigns")
 );
-const TabPanel = React.lazy(
-  () => import("./views/Components/TabPanel")
-);
+const TabPanel = React.lazy(() => import("./views/Components/TabPanel"));
 const UnderDevelopment = React.lazy(
   () => import("./components/UnderDevelopment")
 );
@@ -143,7 +141,7 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             UserTable,
-            !userPermissionObject?.[PermissionKeys.ADMIN_USERS_VIEW]
+            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
           )}
         />
         <Route
@@ -151,7 +149,7 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             AccessManagementTable,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[PermissionKeys.ADMIN_USERS_VIEW]
           )}
         />
 
@@ -161,7 +159,9 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             AccordionAndDividers,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[
+              PermissionKeys.COMPONENTS_ACCORDION_DIVIDER_VIEW
+            ]
           )}
         />
         <Route
@@ -169,7 +169,9 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             ImageDesigns,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[
+              PermissionKeys.COMPONENTS_IMAGE_DESIGNS_VIEW
+            ]
           )}
         />
         <Route
@@ -177,12 +179,18 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             TabPanel,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[PermissionKeys.COMPONENTS_TAB_PANEL_VIEW]
           )}
         />
         <Route
           path="/components/under-development"
-          element={withLayout(MainLayout, UnderDevelopment)}
+          element={withLayout(
+            MainLayout,
+            UnderDevelopment,
+            !userPermissionObject?.[
+              PermissionKeys.COMPONENTS_UNDER_DEVELOPMENT_VIEW
+            ]
+          )}
         />
 
         {/* Design - Input Fields */}
@@ -191,7 +199,9 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             Autocomplete,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[
+              PermissionKeys.INPUT_FIELDS_AUTOCOMPLETE_VIEW
+            ]
           )}
         />
         <Route
@@ -199,7 +209,9 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             TextField,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[
+              PermissionKeys.INPUT_FIELDS_TEXT_FIELDS_VIEW
+            ]
           )}
         />
         <Route
@@ -207,7 +219,9 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             DatePickers,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[
+              PermissionKeys.INPUT_FIELDS_DATE_PICKERS_VIEW
+            ]
           )}
         />
         <Route
@@ -215,7 +229,9 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             OtherInputs,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[
+              PermissionKeys.INPUT_FIELDS_OTHER_INPUTS_VIEW
+            ]
           )}
         />
 
@@ -225,26 +241,50 @@ const AppRoutes = () => {
           element={withLayout(
             MainLayout,
             ChemicalDashboard,
-            !userPermissionObject?.[PermissionKeys.INSIGHT_VIEW]
+            !userPermissionObject?.[PermissionKeys.CHEMICAL_MNG_DASHBOARD_VIEW]
           )}
         />
         <Route
           path="/chemical-mng/chemical-requests"
-          element={withLayout(MainLayout, ChemicalRequestTable)}
+          element={withLayout(
+            MainLayout,
+            ChemicalRequestTable,
+            !userPermissionObject?.[
+              PermissionKeys.CHEMICAL_MNG_REQUEST_REGISTER_VIEW
+            ]
+          )}
         />
         <Route
           path="/chemical-mng/purchase-inventory"
-          element={withLayout(MainLayout, ChemicalPurchaseInventoryTable)}
+          element={withLayout(
+            MainLayout,
+            ChemicalPurchaseInventoryTable,
+            !userPermissionObject?.[
+              PermissionKeys.CHEMICAL_MNG_PURCHASE_INVENTORY_VIEW
+            ]
+          )}
         />
         <Route
           path="/chemical-mng/transaction"
-          element={withLayout(MainLayout, ChemicalTransactionTable)}
+          element={withLayout(
+            MainLayout,
+            ChemicalTransactionTable,
+            !userPermissionObject?.[
+              PermissionKeys.CHEMICAL_MNG_TRANSACTION_VIEW
+            ]
+          )}
         />
         <Route
           path="/chemical-mng/assigned-tasks"
-          element={withLayout(MainLayout, () => (
-            <ChemicalRequestTable isAssignedTasks={true} />
-          ))}
+          element={withLayout(
+            MainLayout,
+            () => {
+              return <ChemicalRequestTable isAssignedTasks={true} />;
+            },
+            !userPermissionObject?.[
+              PermissionKeys.CHEMICAL_MNG_ASSIGNED_TASKS_VIEW
+            ]
+          )}
         />
       </Route>
     </Routes>

@@ -826,7 +826,7 @@ export default function AddOrEditChemicalPurchaseAndInventoryDialog({
                           options={
                             supplierTypeData?.length
                               ? supplierTypeData.map(
-                                  (supplier) => supplier.type
+                                  (supplier) => supplier.typeName
                                 )
                               : []
                           }
